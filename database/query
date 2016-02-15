@@ -1,0 +1,61 @@
+load data infile '/home/roach/Projects/database/authors.csv'
+into table authors
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(first_name,last_name, avatar);
+
+load data infile '/home/roach/Projects/database/books.csv'
+into table books
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(`title`, `created_date`, `isbn`, `description`,`price`);
+
+load data infile '/home/roach/Projects/database/categories.csv'
+into table categories
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(`name`, `description`, `image`);
+
+
+load data infile '/home/roach/Projects/database/comments.csv'
+into table comments
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(`title`, `text`, `book_id`, `user_id`);
+
+LOAD DATA INFILE '\/home\/roach\/Projects\/database\/users.csv'
+INTO TABLE users
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(`first_name`, `last_name`, `email`, `password`, `salt`, `sex`, `avatar`, `dob`, `status`, `hash`);
+
+INSERT INTO subscriptions (category_id, user_id) VALUES
+    ( (SELECT id from categories WHERE id='1'), (SELECT id from users WHERE id='1') ),
+    ( (SELECT id from categories WHERE id='3'), (SELECT id from users WHERE id='1' ) );
+
+select users.first_name, users.last_name, comments.title, comments.book_id from users
+JOIN comments ON users.id = comments.user_id
+where comments.book_id=2;
+
+select books.id, books.title, authors.last_name
+FROM books
+join authors_books ON books.id = authors_books.book_id
+join authors ON authors_books.author_id = authors.id
+where books.id='4'
+ORDER BY books.id ASC;
+
+alter table subscriptions DROP FOREIGN KEY fk_subscriptions_category_id;
+alter table subscriptions  ADD constraint `fk_subscriptions_category_id` FOREIGN KEY
+(`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+alter table subscriptions  ADD constraint `fk_subscriptions_user_id` FOREIGN KEY
+(`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

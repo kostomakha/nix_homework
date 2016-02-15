@@ -1,0 +1,61 @@
+/*ul>li:last-of-type>a{*/
+    /*color: red;*/
+/*}*/
+
+.red {
+    color: red;
+}
+img {
+    width: 100%;
+}
+a, p {
+    font-size: 11px;
+}
+
+h2 > a {
+    color: #D4144F;
+    font-size: 16px;
+    font-weight: 800;
+
+}
+.goods {
+    width: 80%;
+    float: left;
+}
+
+.car {
+    width: 30%;
+    background-color: #EFEFEF;
+    float: left;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin: 0 1em 1em;
+}
+
+
+.content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.table {
+    border: 1px solid black;
+    display: table;
+}
+.table-row {
+    border: 1px solid black;
+    display: table-row;
+}
+
+.table-row:hover {
+    background-color: aquamarine;
+}
+
+.table-cell {
+    border-bottom: 1px solid black;
+    display: table-cell;
+}
+
+.control {
+    float: right;
+}

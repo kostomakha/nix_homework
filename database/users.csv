@@ -1,0 +1,5 @@
+first_name,last_name,email,password,salt,sex,avatar,dob,status,hash
+Dan,Farm,danfarm@example.com,123456789,123456789,1,avatar/danfarm.jpg,1920-10-01,1,sdsgagaggf
+Debby,Colt,debbycolt@example.colt,123456790,123456790,2,avatar/debbycolt.jpg,1952-11-23,2,dgdagagerg
+Nora,Rocks,norarocks@example.com,123456791,123456791,2,avatar/norarocks.jpg,1980-10-24,1,adgdfagdfg
+Jack,Reacher,jackreacher@example.com,123456792,123456792,1,avatar/jackreacher.jpg,1970-10-25,1,adgdfagdfg
